@@ -16,11 +16,11 @@ import random
 
 #data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv')
 #data = pd.read_csv('X:/alle/DataSolutions/Balint/beispiel_comments.csv')
-data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv', nrows = 8000)
+data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv', nrows = 800)
 
 st.subheader('Here is the text: \n')
 
-nr = random.randint(5, 3000)
+nr = random.randint(5, 300)
 st.text(data['id'][nr])
 st.markdown(data['comment'][nr])
 
