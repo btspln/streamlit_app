@@ -59,7 +59,7 @@ get_data().append({"comm_id": str(data['id'][nr]), "Bewertung": bew})
 
 df = pd.DataFrame(get_data())
 df['comm_id'] = df.comm_id.shift(1)
-df['Bewertung'][0] = None
-st.dataframe(df[::-1][:-1])
+#df['Bewertung'][0] = None
+st.dataframe(df[::-1])
 
 st.markdown(get_table_download_link(df), unsafe_allow_html = True)
