@@ -16,7 +16,7 @@ import random
 
 #data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv')
 #data = pd.read_csv('X:/alle/DataSolutions/Balint/beispiel_comments.csv')
-data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv')
+data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv', nrows = 8000)
 
 st.subheader('Here is the text: \n')
 
