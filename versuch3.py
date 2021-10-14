@@ -14,7 +14,7 @@ from io import BytesIO
 
 import random
 
-#data = pd.read_csv('C:/Users/Balint.Psenak/OneDrive - insidemedia.net/Desktop/beispiel_comments.csv')
+#data = pd.read_csv('https://github.com/btspln/streamlit_app/blob/main/beispiel_comments.csv')
 data = pd.read_csv('X:/alle/DataSolutions/Balint/beispiel_comments.csv')
 
 st.subheader('Here is the text: \n')
