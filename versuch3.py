@@ -20,7 +20,7 @@ data = pd.read_csv('https://raw.githubusercontent.com/btspln/streamlit_app/1afe6
 
 st.subheader('Here is the text: \n')
 
-nr = random.randint(5, 7500)
+nr = random.randint(5, 200)
 st.text(data['id'][nr])
 st.markdown(data['comment'][nr])
 
