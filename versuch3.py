@@ -41,23 +41,6 @@ else:
 def get_data():
     return []
 
-def to_excel(df):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine = 'xlsxwriter')
-    df.to_excel(writer, sheet_name = 'Sheet1')
-    writer.save()
-    processed_data = output.getvalue()
-    return processed_data
-
-def get_table_download_link(df):
-    """Generates a link allowing the data in a given panda dataframe to be downloaded
-    in:  dataframe
-    out: href string
-    """
-    val = to_excel(df)
-    b64 = base64.b64encode(val)  # val looks like b'...'
-    return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="extract.xlsx">Download xlsx file</a>' # decode b'abc' => abc
-
 get_data().append({"comm_id": str(data['id'][nr]), "Bewertung": bew})
 
 df = pd.DataFrame(get_data())
@@ -65,4 +48,7 @@ df['comm_id'] = df.comm_id.shift(1)
 #df['Bewertung'][0] = None
 st.dataframe(df[::-1])
 
-st.markdown(get_table_download_link(df), unsafe_allow_html = True)
+csv = df.to_csv(index = False)
+b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
+st.markdown(href, unsafe_allow_html = True)
