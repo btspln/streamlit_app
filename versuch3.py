@@ -29,6 +29,9 @@ st.markdown(data['comment'][nr])
 pos_button = st.button('POSITIVE')
 neg_button = st.button('NEGATIVE')
 
+st.text(str(data.shape[0]))
+st.text(str(data.shape[1]))
+
 if pos_button:
     bew = 'POSITIVE'
 else:
