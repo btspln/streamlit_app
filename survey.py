@@ -49,10 +49,10 @@ else:
 def get_data():
     return []
 
-get_data().append({"comm_id": str(data['id'][nr]), "Bewertung": bew})
+get_data().append({"Comment ID": str(data['id'][nr]), "Rating": bew})
 
 df = pd.DataFrame(get_data())
-df['comm_id'] = df.comm_id.shift(1)
+df['Comment ID'] = df['Comment ID'].shift(1)
 #df['Bewertung'][0] = None
 st.dataframe(df[::-1][:-1])
 
