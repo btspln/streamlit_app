@@ -37,6 +37,9 @@ pos_button = st.button('POSITIVE')
 neu_button = st.button('NEUTRAL')
 neg_button = st.button('NEGATIVE')
 
+st.text(' ')
+st.text(' ')
+
 if pos_button:
     bew = 'POSITIVE'
 elif neu_button:
@@ -57,5 +60,5 @@ st.dataframe(df[::-1][:-1])
 
 csv = df.to_csv(index = False)
 b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
+href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as  &lt;some_name&gt;.csv)'
 st.markdown(href, unsafe_allow_html = True)
