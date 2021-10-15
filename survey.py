@@ -58,6 +58,9 @@ df['Comment ID'] = df['Comment ID'].shift(1)
 #df['Bewertung'][0] = None
 st.dataframe(df[::-1][:-1])
 
+st.text(' ')
+st.text(' ')
+
 csv = df.to_csv(index = False)
 b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
 href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as  &lt;some_name&gt;.csv)'
