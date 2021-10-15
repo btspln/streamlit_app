@@ -18,22 +18,30 @@ import random
 #data = pd.read_csv('X:/alle/DataSolutions/Balint/beispiel_comments.csv')
 data = pd.read_csv('https://raw.githubusercontent.com/btspln/streamlit_app/1afe6940de6ca9b057907847818e235ae8ee3148/beispiel_comments.csv')
 
-st.subheader('Here is the text: \n')
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: rgb(255, 127, 127);
+}
+</style>""", unsafe_allow_html = True)
 
-nr = random.randint(5, 200)
-st.text(data['id'][nr])
+length = data.shape[0]
+nr = random.randint(0, length - 1)
+
+st.subheader('Please rate the following comment: \n')
 st.markdown(data['comment'][nr])
-
-#bew = st.selectbox('Bewertung:', ('', 'Positive', 'Negative'))
+st.text(' ')
+st.text('Comment ID:')
+st.text(data['id'][nr])
 
 pos_button = st.button('POSITIVE')
+neu_button = st.button('NEUTRAL')
 neg_button = st.button('NEGATIVE')
-
-st.text(str(data.shape[0]))
-st.text(str(data.shape[1]))
 
 if pos_button:
     bew = 'POSITIVE'
+elif neu_button:
+    bew = 'NEUTRAL'
 else:
     bew = 'NEGATIVE'
 
@@ -46,7 +54,7 @@ get_data().append({"comm_id": str(data['id'][nr]), "Bewertung": bew})
 df = pd.DataFrame(get_data())
 df['comm_id'] = df.comm_id.shift(1)
 #df['Bewertung'][0] = None
-st.dataframe(df[::-1])
+st.dataframe(df[::-1][:-1])
 
 csv = df.to_csv(index = False)
 b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
