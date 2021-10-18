@@ -29,7 +29,10 @@ length = data.shape[0]
 nr = random.randint(0, length - 1)
 
 st.subheader('Please rate the following comment: \n')
+st.text(' ')
+st.markdown("""---""")
 st.markdown(data['comment'][nr])
+st.markdown("""---""")
 st.text(' ')
 st.text(' ')
 
