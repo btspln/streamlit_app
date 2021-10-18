@@ -34,6 +34,7 @@ st.markdown("""---""")
 st.markdown(data['comment'][nr])
 st.markdown("""---""")
 st.text(' ')
+st.text(data['id'][nr])
 st.text(' ')
 
 pos_button = st.button('POSITIVE')
